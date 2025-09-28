@@ -127,5 +127,7 @@ def preprocess_handler(inference_record, logger):
     logger.debug(f"I'm debugging a processing record 2: {list(flat_record.keys())}")
     logger.debug(f"I'm debugging a processing record 3: {flat_record}")
 
-    # --- Return JSON string for monitoring ---
-    return flat_record
+    values = [str(flat_record['price']), str(flat_record['sqft']), str(flat_record['bedrooms']), 
+              str(flat_record['bathrooms']), flat_record['location'], str(flat_record['year_built']), 
+              flat_record['condition']]
+    return {str(i).zfill(20): v for i, v in enumerate(values)}
